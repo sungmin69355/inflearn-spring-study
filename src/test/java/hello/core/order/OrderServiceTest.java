@@ -8,7 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberSerivce memberSerivce =new MemberSerivceImpl();
+    MemberSerivce memberSerivce = new MemberSerivceImpl();
     OrderService orderService = new OrderServiceImpl();
 
     @Test
