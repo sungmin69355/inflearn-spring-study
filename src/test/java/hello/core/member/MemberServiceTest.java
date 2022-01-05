@@ -1,10 +1,20 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
-    MemberSerivce memberSerivce = new MemberSerivceImpl();
+    MemberSerivce memberSerivce;
+
+    //테스트가 돌기전에 실행하는 메소드
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberSerivce = appConfig.memberSerivce();
+    }
 
     @Test
     void join(){
