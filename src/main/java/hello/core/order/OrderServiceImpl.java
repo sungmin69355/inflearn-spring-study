@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService{
 
-    //OrderServiceImpl는 생성자 주입으로 인해 인터페이스에만 의존하게 된다.
+    //생성자로 주입시 final 키워드를 사용가능
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy; //인터페이스만 의존하게 만든다.
 
