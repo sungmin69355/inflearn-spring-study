@@ -1,5 +1,6 @@
 package hello.core.order;
 
+//import hello.core.annotataion.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -15,6 +16,13 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy; //인터페이스만 의존하게 만든다.
 
+    //생성자 자동 주입
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository,
+//                            @MainDiscountPolicy DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
