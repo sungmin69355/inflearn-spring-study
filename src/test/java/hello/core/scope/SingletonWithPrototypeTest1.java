@@ -1,6 +1,7 @@
 package hello.core.scope;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -31,17 +32,16 @@ public class SingletonWithPrototypeTest1 {
     }
 
     static class ClientBean {
-        private final PrototypeBean prototypeBean; //생성시점에 주입
-
         @Autowired
-        public ClientBean(PrototypeBean prototypeBean) {
-            this.prototypeBean = prototypeBean;
-        }
+        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        //ObjectProvider 의 getObject() 를 호출하면 내부에서는 스프링 컨테이너를 통해 해당 빈을 찾아서 반환한다. (DL) DL정도의 기능만 제공
         public int logic() {
+            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
             prototypeBean.addCount();
-            int count = prototypeBean.getCount(); //이미 생성시점에서 주입된걸 쓴다.
+            int count = prototypeBean.getCount();
             return count;
         }
+
     }
 
     @Scope("prototype")
