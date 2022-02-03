@@ -25,4 +25,4 @@ public class LogDemoController {
         logDemoService.logic("testId");
         return "OK";
     }
-\}
+}
